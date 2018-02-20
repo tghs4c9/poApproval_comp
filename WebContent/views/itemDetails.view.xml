@@ -1,0 +1,53 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form" xmlns="sap.m"
+		controllerName="itpcl.mm.approvepo.controllers.itemDetails" xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<Page title="PO Line Item Details">
+		
+		<content>
+	
+	<ObjectHeader
+	intro ="{PONumber}"></ObjectHeader>
+	
+	<Input id ="po" type="number" value = "{header>/PONumber}" ></Input>
+	
+	<List
+		id="idList"
+		 
+		items="{items>/PurchaseOrderItem/results}"
+		  >
+		<items>
+			<ObjectListItem
+			   
+				title="{items>Material}"
+				intro="{items>POItem}"
+				number = "{items>NetValue}"
+				numberUnit = "{items>Currency}"
+				/>
+		</items>
+	</List>
+			</content>
+		<footer>
+			<Toolbar id="otbFooter">
+				<ToolbarSpacer />
+				<Button type="Accept" text="Approve" press="approve">
+					<layoutData>
+						<OverflowToolbarLayoutData
+							moveToOverflow="false" />
+					</layoutData>
+				</Button>
+				<Button type="Reject" text="Reject" press="reject">
+					<layoutData>
+						<OverflowToolbarLayoutData
+							moveToOverflow="false" />
+					</layoutData>
+				</Button>
+				
+				<OverflowToolbarButton press="logout" text="Logout"  icon="sap-icon://log" />
+
+			</Toolbar>
+		
+	</footer>
+	
+		</Page>
+		
+</core:View>
